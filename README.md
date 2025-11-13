@@ -292,3 +292,108 @@ la siguente funcion es hay ganador():
 }
 en esta funcion se hizo: Cuenta las piezas restantes de cada jugador.
 🔹 Si uno se queda sin piezas, el otro gana.
+hay termina el tablero.cpp.
+
+
+ahora empezamos con el main.cpp aqui donde se implenta la logica de tablero.cpp como el menu principal y el flujo del juego.
+
+empezamos con:
+
+1) #include <iostream>
+ #include "Tablero.h"
+ using namespace std;
+Importa la librería de entrada/salida y el encabezado con la clase Tablero.
+
+
+la funcion principal es:
+
+
+2) int main() {
+    Tablero juego;
+    int f1, c1, f2, c2;
+    int opcion;
+    en esta parte del codigo se hace:
+    
+ Crea un objeto juego del tipo Tablero.
+Declara variables para manejar coordenadas y el menú.
+
+en esta parte es el menu del juego:
+
+
+3) while (true) {
+    cout << "\n===== MENU =====\n";
+    cout << "1. Iniciar partida\n";
+    cout << "2. Ver reglas\n";
+    cout << "3. Salir\n";
+    cout << "Elige una opción: ";
+    cin >> opcion;
+
+   se hace o corre: Muestra un menú que se repite hasta que el jugador elija salir.
+
+   esta es la opcion tres donde corre salir:
+
+   4) if (opcion == 3) {
+    cout << "Gracias por jugar.\n";
+    break;
+}
+
+donde termina el programa
+
+la opcion dos es mostrarnos las reglas para que las personas que no saben jugar puedan aprender.
+
+5) else if (opcion == 2) {
+    cout << "\nReglas de Damas Internacionales:\n";
+    ...
+}
+lo que hace es Muestra las reglas básicas del juego.
+
+en la opcion 1 es iniciar una partida o el modo de juego.
+
+
+6) else if (opcion == 1) {
+    juego.iniciar();
+    while (true) {
+        juego.mostrar();
+        if (juego.hayGanador()) break;
+
+"        cout << "\nIngrese su movimiento (fila1 col1 fila2 col2) o -1 para salir: ";
+        cin >> f1;
+        if (f1 == -1) break;
+        cin >> c1 >> f2 >> c2;
+        juego.mover(f1, c1, f2, c2);
+    }
+}
+esta funcion hace: ) Llama a iniciar() para preparar el tablero.
+
+ Entra en un bucle de juego:
+
+1) Muestra el tablero.
+
+2) Verifica si hay un ganador.
+
+3) Pide las coordenadas del movimiento.
+
+4) Si el jugador ingresa -1, sale de la partida.
+
+5)Llama a mover() para ejecutar el movimiento.
+
+
+la opcion valida es:
+
+7) else {
+    cout << "Opción no válida.\n";
+}
+
+donde Muestra un mensaje de error si se ingresa un número fuera del menú.
+
+y por ultimo como siempre donde termina en todo codigo de c++ es :
+
+8) return 0;
+}
+
+Termina el programa correctamente.
+
+en resumen:
+1) Tablero.h	Declara la clase y sus métodos
+2) Tablero.cpp	Implementa la lógica del juego
+3) main.cpp	Contiene el menú y controla el flujo
